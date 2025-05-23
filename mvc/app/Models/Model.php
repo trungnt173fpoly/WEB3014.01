@@ -58,5 +58,28 @@ class Model{
             $e->getMessage());
         }
     }
+    // Phương thức giúp truy vấn dữ liệu
+    // Có nhiều bản ghi
+    // Có 1 bản ghi
+    // Đặt 2 hằng số dùng phân biệt 2 trạng thái của fetch
+    const FETCH_ALL = "all";
+    const Fetch_FIRST = "first";
+    private function executeQuery($option = [], $fetchModel = self::FETCH_ALL){
+        // Mặc định trạng thái truy vấn là lấy nhiều bản ghi
+        $result = $this->execute($option);
+        if(!$result){
+            return false;
+        }else{
+            return $fetchModel ==  self::FETCH_ALL
+            ? $result->fetchAll(PDO::FETCH_OBJ)
+            : $result->fetch(PDO::FETCH_OBJ);
+        }
+    }
+    protected function all($option = []){
+        return $this->executeQuery($option);
+    }
+    protected function first($option = []){
+        return $this->executeQuery($option, self::Fetch_FIRST);
+    }
 }
 ?>
