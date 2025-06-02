@@ -1,10 +1,15 @@
 <?php 
+// Thêm namespace
+namespace App\Models;
+use PDO;
+use PDOException;
+use Exception;
 class Model{
     // Kết nối csdl
-    private $host = "localhost"; //địa chỉ mysql server sẽ kết nối đến
-    private $dbname="web3014.01"; //tên database sẽ kết nối đến
-    private $username = "root"; //username để kết nối đến database 
-    private $password = ""; // mật khẩu để kết nối đến database
+    // private $host = "localhost"; //địa chỉ mysql server sẽ kết nối đến
+    // private $dbname="web3014.01"; //tên database sẽ kết nối đến
+    // private $username = "root"; //username để kết nối đến database 
+    // private $password = ""; // mật khẩu để kết nối đến database
     // Thuộc tính chứa kết nối CSDL
     private $pdo;
     // Thuộc tính chứa câu lệnh sql 
@@ -18,10 +23,10 @@ class Model{
     // Hàm => Phương thức
     private function getConnection(){
         try{
-            $conn = new PDO("mysql:host=$this->host; 
-            dbname=$this->dbname;", 
-            $this->username, 
-            $this->password,
+            $conn = new PDO("mysql:host={$_ENV['DB_HOST']}; 
+            dbname={$_ENV['DB_NAME']};", 
+             $_ENV['DB_USER'], 
+             $_ENV['DB_PASS'],
             [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
