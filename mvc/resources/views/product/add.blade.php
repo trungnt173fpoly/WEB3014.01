@@ -9,7 +9,9 @@
             @endforeach
         </ul>
     @endif
-
+    @if(isset($_SESSION['success']) && isset($_GET['msg']))
+        <span>{{$_SESSION['success']}}</span>
+    @endif
     <form action="{{route("product/create")}}" 
     method="post" enctype="multipart/form-data">
         <div>

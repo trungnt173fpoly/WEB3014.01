@@ -15,5 +15,12 @@ class Product extends Model{
         $this->conn->setSql( $sql);
         return $this->conn->all();
     }
+    // Thêm
+    public function addProduct($id, $name, $price, $image, $quantity, $status){
+        $sql = "INSERT INTO $this->table(`id`, `name`, `price`, `image`, `quantity`, `status`) 
+        VALUES (?,?,?,?,?,?)"; // Câu lệnh Sql
+        $this->conn->setSql( $sql);
+        return $this->conn->execute([$id, $name, $price, $image, $quantity, $status]);
+    }
 }
 ?>
