@@ -11,6 +11,12 @@ $router->get('/danh-bai', function(){
 });
 // Ct: $router->phương_thức('đường dẫn', Tên_class::class.'@tên_phương thức');
 // Phương thức: get/post
+// Danh sách
 $router->get('/product', ProductController::class.'@index');
+// Thêm
+// Hiện thị form
+$router->get('/product/create', ProductController::class.'@create');
+// Xử lý thêm
+$router->post('/product/create', ProductController::class.'@store');
 $router->run(); // Nằm ở cuối cùng
 ?>

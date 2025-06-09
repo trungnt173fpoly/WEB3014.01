@@ -1,6 +1,7 @@
 @extends('layout')
 @section('title', 'Danh sách sản phẩm')
 @section('content')
+    <a href="{{route("product/create")}}"><button>Thêm sản phẩm</button></a>
     <h1>Trang sản phẩm</h1>
     <table>
         <tr>

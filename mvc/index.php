@@ -9,6 +9,7 @@
 // include 'app/Models/Product.php';
 use Dotenv\Dotenv;
 use App\Models\Product;
+session_start();
 include_once 'vendor/autoload.php';
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
