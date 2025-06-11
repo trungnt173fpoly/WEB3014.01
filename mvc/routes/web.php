@@ -18,5 +18,13 @@ $router->get('/product', ProductController::class.'@index');
 $router->get('/product/create', ProductController::class.'@create');
 // Xử lý thêm
 $router->post('/product/create', ProductController::class.'@store');
+// Xóa
+// Hiện thị form
+$router->get('/product/delete/{id}', ProductController::class.'@delete');
+// Sửa
+// Hiện thị form
+$router->get('/product/edit/{id}', ProductController::class.'@edit');
+// Xử lý sửa
+$router->post('/product/edit/{id}', ProductController::class.'@update');
 $router->run(); // Nằm ở cuối cùng
 ?>

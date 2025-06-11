@@ -28,8 +28,8 @@
                     @endif
                 </td>
                 <td>
-                    <button>Sửa</button>
-                    <button>Xóa</button>
+                    <a href="{{route('product/edit/{id}', ['id'=>$product->id])}}"><button>Sửa</button></a>
+                    <a href="{{route('product/delete/{id}', ['id'=>$product->id])}}"><button>Xóa</button></a>
                 </td>
             </tr>
         @endforeach

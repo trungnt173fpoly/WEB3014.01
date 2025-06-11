@@ -22,5 +22,23 @@ class Product extends Model{
         $this->conn->setSql( $sql);
         return $this->conn->execute([$id, $name, $price, $image, $quantity, $status]);
     }
+    // Xóa
+    public function deleteProduct($id){
+        $sql = "DELETE FROM $this->table WHERE id = ?"; // Câu lệnh Sql
+        $this->conn->setSql( $sql);
+        return $this->conn->execute([$id]);
+    }
+    // Lấy dữ liệu theo id
+    public function getIDProduct($id){
+        $sql = "SELECT * FROM $this->table WHERE id = ?"; // Câu lệnh Sql
+        $this->conn->setSql( $sql);
+        return $this->conn->first([$id]);
+    }
+    public function updateProduct($name, $price, $image, $quantity, $status, $id){
+        $sql = "UPDATE $this->table SET `name`= ?,`price`= ?,
+        `image`= ?,`quantity`= ?,`status`= ? WHERE `id`= ?"; // Câu lệnh Sql
+        $this->conn->setSql( $sql);
+        return $this->conn->execute([$name, $price, $image, $quantity, $status, $id]);
+    }
 }
 ?>
